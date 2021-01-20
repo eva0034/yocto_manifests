@@ -16,7 +16,8 @@ cp /workdir/rpi/meta-rpi/conf/local.conf.sample /workdir/rpi/build/conf/local.co
 cp /workdir/rpi/meta-rpi/conf/bblayers.conf.sample /workdir/rpi/build/conf/bblayers.conf
 sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "tar.xz rpi-sdimg"/g' /workdir/rpi/build/conf/local.conf
 sed -i 's/MACHINE = "raspberrypi3"/#MACHINE = "raspberrypi3"/g' /workdir/rpi/build/conf/local.conf
-MACHINE=raspberrypi0-wifi
+export MACHINE=raspberrypi0-wifi
 source poky-dunfell/oe-init-build-env /workdir/rpi/build
+HOME=/workdir
 bitbake qt5-image
 ```
