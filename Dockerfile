@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
-ENV DEBIAN_FRONTENV noninteractive
+ENV DEBIAN_FRONTEND="noninteractive"
+ENV TZ="Europe/London"
 
 RUN apt-get update && apt-get -y upgrade
 
