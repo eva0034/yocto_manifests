@@ -7,6 +7,8 @@ docker run -ti gmacario/build-yocto:latest
 sudo mkdir -p /workdir
 sudo chown build.build /workdir
 cd /workdir
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
 repo init -u https://github.com/matt2005/yocto_manifests.git -b main
 repo sync
 mkdir -p /workdir/rpi/build/conf
