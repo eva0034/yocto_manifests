@@ -1,5 +1,11 @@
 ```bash
-mkdir -p /workdir
+docker build -t gmacario/build-yocto:latest .
+docker run -ti gmacario/build-yocto:latest
+```
+
+```bash
+sudo mkdir -p /workdir
+sudo chown build.build /workdir
 cd /workdir
 repo init -u https://github.com/matt2005/yocto_manifests.git -b main
 repo sync
