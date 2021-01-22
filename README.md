@@ -50,7 +50,7 @@ scp /home/build/raspwifi/qt5-image-raspberrypi0-wifi.rpi-sdimg root@192.168.1.51
 
 ```bash
 cd ~/
-repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m rpi_x64.xml
+repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m rpi4_x64.xml
 repo sync
 mkdir -p ~/rpi64/build/conf
 cp ~/rpi64/meta-rpi64/conf/local.conf.sample ~/rpi64/build/conf/local.conf
