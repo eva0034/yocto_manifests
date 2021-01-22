@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04 AS base
 
 ENV DEBIAN_FRONTEND="noninteractive"
 ENV TZ="Europe/London"
@@ -43,3 +43,19 @@ WORKDIR /home/build
 CMD "/bin/bash"
 
 # EOF
+
+FROM base as RPI
+
+ENV SSTATE_DIR "~/sstate-cache"
+
+RUN cd ~/ && export SSTATE_DIR="~/sstate-cache" && \
+        repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m rpi4_x64.xml && \
+        repo sync && \
+        mkdir -p ~/rpi64/build/conf && \
+        cp ~/rpi64/meta-rpi64/conf/local.conf.sample ~/rpi64/build/conf/local.conf && \
+        cp ~/rpi64/meta-rpi64/conf/bblayers.conf.sample ~/rpi64/build/conf/bblayers.conf && \
+        sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "tar.xz rpi-sdimg"/g' ~/rpi64/build/conf/local.conf && \
+        sed -i 's/MACHINE = "raspberrypi4-64"/#MACHINE = "raspberrypi4-64"/g' ~/rpi64/build/conf/local.conf && \
+        MACHINE=raspberrypi4-64 && \
+        source poky-dunfell/oe-init-build-env ~/rpi64/build && \
+        bitbake qt5-image

@@ -32,6 +32,9 @@ git config --global user.name "Your Name"
 This took about 36 hours
 ```bash
 cd ~/
+mkdir -p ~/sstate-cache
+SSTATE_DIR="~/sstate-cache"
+export SSTATE_DIR="~/sstate-cache"
 repo init -u https://github.com/matt2005/yocto_manifests.git -b main
 repo sync
 mkdir -p ~/rpi/build/conf
@@ -50,6 +53,8 @@ scp /home/build/raspwifi/qt5-image-raspberrypi0-wifi.rpi-sdimg root@192.168.1.51
 
 ```bash
 cd ~/
+SSTATE_DIR="~/sstate-cache"
+export SSTATE_DIR="~/sstate-cache"
 repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m rpi4_x64.xml
 repo sync
 mkdir -p ~/rpi64/build/conf
