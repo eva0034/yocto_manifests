@@ -48,7 +48,7 @@ ENV SSTATE_DIR "~/sstate-cache"
 
 RUN cd ~/ && export SSTATE_DIR="~/sstate-cache"
 RUN git config --global user.email "you@example.com" && git config --global user.name "Your Name"
-RUN git config --global color.ui false
+RUN git config --global color.ui false #stop repo asking to colourise
 RUN repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m rpi4_x64.xml
 RUN repo sync
 
@@ -61,12 +61,12 @@ RUN sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "rpi-sdimg"/g' ~/rpi64/bu
 RUN sed -i 's/MACHINE = "raspberrypi4-64"/#MACHINE = "raspberrypi4-64"/g' ~/rpi64/build/conf/local.conf
 ENV MACHINE raspberrypi4-64
 ENV BB_GENERATE_MIRROR_TARBALLS 1
-RUN cd ~/ && source poky-dunfell/oe-init-build-env ~/rpi64/build && bitbake qt5-image --runall=fetch
+RUN /bin/bash -c "cd ~/ && source poky-dunfell/oe-init-build-env ~/rpi64/build && bitbake qt5-image --runall=fetch" # just get the sources
 
 FROM RPI4_x64_fetch as RPI4_x64_build
 ENV MACHINE raspberrypi4-64
 ENV BB_GENERATE_MIRROR_TARBALLS 1
-RUN cd ~/ && source poky-dunfell/oe-init-build-env ~/rpi64/build && bitbake qt5-image
+RUN /bin/bash -c "cd ~/ && source poky-dunfell/oe-init-build-env ~/rpi64/build && bitbake qt5-image"
 
 FROM base as output
 COPY --from=RPI4_x64_build /home/build/rpi64/build/tmp/images/ /home/build/images/RPI4_x64/
