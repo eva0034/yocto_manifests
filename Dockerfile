@@ -61,13 +61,11 @@ RUN sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "rpi-sdimg"/g' ~/rpi64/bu
 RUN sed -i 's/MACHINE = "raspberrypi4-64"/#MACHINE = "raspberrypi4-64"/g' ~/rpi64/build/conf/local.conf
 ENV MACHINE raspberrypi4-64
 ENV BB_GENERATE_MIRROR_TARBALLS 1
-RUN export BB_GENERATE_MIRROR_TARBALLS = "1"
 RUN cd ~/ && source poky-dunfell/oe-init-build-env ~/rpi64/build && bitbake qt5-image --runall=fetch
 
 FROM RPI4_x64_fetch as RPI4_x64_build
 ENV MACHINE raspberrypi4-64
 ENV BB_GENERATE_MIRROR_TARBALLS 1
-RUN export BB_GENERATE_MIRROR_TARBALLS = "1"
 RUN cd ~/ && source poky-dunfell/oe-init-build-env ~/rpi64/build && bitbake qt5-image
 
 FROM base as output
