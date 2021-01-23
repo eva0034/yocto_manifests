@@ -47,7 +47,7 @@ FROM base as repo_prep
 ENV SSTATE_DIR "~/sstate-cache"
 
 RUN cd ~/ && export SSTATE_DIR="~/sstate-cache"
-RUN git config --global user.email "you@example.com && git config --global user.name "Your Name"
+RUN git config --global user.email "you@example.com" && git config --global user.name "Your Name"
 RUN git config --global color.ui false
 RUN repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m rpi4_x64.xml
 RUN repo sync
@@ -64,4 +64,4 @@ RUN source poky-dunfell/oe-init-build-env ~/rpi64/build
 RUN bitbake qt5-image
 
 FROM base as output
-COPY --from=RPI4_x64 /home/build/rpi64/build/tmp/images/ /home/build/images/
+COPY --from=RPI4_x64 /home/build/rpi64/build/tmp/images/ /home/build/images/RPI4_x64/
