@@ -52,16 +52,23 @@ RUN git config --global color.ui false
 RUN repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m rpi4_x64.xml
 RUN repo sync
 
-FROM repo_prep AS RPI4_x64
+FROM repo_prep AS RPI4_x64_fetch
 
 RUN mkdir -p ~/rpi64/build/conf
 RUN cp ~/rpi64/meta-rpi64/conf/local.conf.sample ~/rpi64/build/conf/local.conf
 RUN cp ~/rpi64/meta-rpi64/conf/bblayers.conf.sample ~/rpi64/build/conf/bblayers.conf
-RUN sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "tar.xz rpi-sdimg"/g' ~/rpi64/build/conf/local.conf
+RUN sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "rpi-sdimg"/g' ~/rpi64/build/conf/local.conf
 RUN sed -i 's/MACHINE = "raspberrypi4-64"/#MACHINE = "raspberrypi4-64"/g' ~/rpi64/build/conf/local.conf
 ENV MACHINE raspberrypi4-64
-RUN source poky-dunfell/oe-init-build-env ~/rpi64/build
-RUN bitbake qt5-image
+ENV BB_GENERATE_MIRROR_TARBALLS 1
+RUN export BB_GENERATE_MIRROR_TARBALLS = "1"
+RUN cd ~/ && source poky-dunfell/oe-init-build-env ~/rpi64/build && bitbake qt5-image --runall=fetch
+
+FROM RPI4_x64_fetch as RPI4_x64_build
+ENV MACHINE raspberrypi4-64
+ENV BB_GENERATE_MIRROR_TARBALLS 1
+RUN export BB_GENERATE_MIRROR_TARBALLS = "1"
+RUN cd ~/ && source poky-dunfell/oe-init-build-env ~/rpi64/build && bitbake qt5-image
 
 FROM base as output
-COPY --from=RPI4_x64 /home/build/rpi64/build/tmp/images/ /home/build/images/RPI4_x64/
+COPY --from=RPI4_x64_build /home/build/rpi64/build/tmp/images/ /home/build/images/RPI4_x64/
