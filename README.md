@@ -12,6 +12,16 @@ Testing of yocto for building rpi images
 - [ ] build raspberrypi 3 image
 - [ ] build raspberrypi 4 image
 
+
+### wsl2
+
+How to reproduce permissions error under WSL 2 running Ubuntu 18.04 on Windows 10 2004:
+```bash
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install build-essential git bison python3 flex diffstat gawk chrpath diffstat texinfo -y
+```
+
 Add qt5 and repeat above 
 
 ```bash
