@@ -15,6 +15,8 @@ Testing of yocto for building rpi images
 
 ### wsl2
 
+https://devblogs.microsoft.com/commandline/per-directory-case-sensitivity-and-wsl/
+
 How to reproduce permissions error under WSL 2 running Ubuntu 18.04 on Windows 10 2004:
 ```bash
 sudo apt-get update -y
@@ -25,8 +27,9 @@ sudo apt-get install build-essential git bison python3 flex diffstat gawk chrpat
 Add qt5 and repeat above 
 
 ```bash
-docker build -t gmacario/build-yocto:latest .
-docker run -ti gmacario/build-yocto:latest
+docker build -t matt2005/build-yocto:latest .
+mkdir ~/yocto
+docker run --mount type=bind,source=~/yocto,target=/home/build/yocto -ti matt2005/build-yocto:latest
 ```
 
 ## git setup
@@ -36,28 +39,33 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 
+docker attach jovial_villani
 
 ## Raspberry Pi Zero
 
 This took about 36 hours
 ```bash
-cd ~/
-mkdir -p ~/sstate-cache
-SSTATE_DIR="~/sstate-cache"
-export SSTATE_DIR="~/sstate-cache"
+cd ~/yocto
+sudo chmod 777 ~/yocto
 repo init -u https://github.com/matt2005/yocto_manifests.git -b main
 repo sync
-mkdir -p ~/rpi/build/conf
-cp ~/rpi/meta-rpi/conf/local.conf.sample ~/rpi/build/conf/local.conf
-cp ~/rpi/meta-rpi/conf/bblayers.conf.sample ~/rpi/build/conf/bblayers.conf
-sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "tar.xz rpi-sdimg"/g' ~/rpi/build/conf/local.conf
-sed -i 's/MACHINE = "raspberrypi3"/#MACHINE = "raspberrypi3"/g' ~/rpi/build/conf/local.conf
-MACHINE=raspberrypi0-wifi
-source poky-dunfell/oe-init-build-env ~/rpi/build
-bitbake qt5-image
-scp /home/build/raspwifi/qt5-image-raspberrypi0-wifi.rpi-sdimg root@192.168.1.51:/root/raspwifi/
+mkdir -p ~/yocto/rpi/build/conf
+cp ~/yocto/rpi/meta-rpi/conf/local.conf.sample ~/yocto/rpi/build/conf/local.conf
+cp ~/yocto/rpi/meta-rpi/conf/bblayers.conf.sample ~/yocto/rpi/build/conf/bblayers.conf
+sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "tar.xz rpi-sdimg"/g' ~/yocto/rpi/build/conf/local.conf
+sed -i 's/MACHINE = "raspberrypi3"/#MACHINE = "raspberrypi3"/g' ~/yocto/rpi/build/conf/local.conf
+export MACHINE=raspberrypi0-wifi
+source ~/yocto/poky-dunfell/oe-init-build-env ~/yocto/rpi/build
+bitbake core-image-base
 ```
 
+##Raspberry Pi 3
+```bash
+export MACHINE=raspberrypi3
+source ~/poky-dunfell/oe-init-build-env ~/yocto/rpi/build
+bitbake core-image-base
+
+```
 
 ## Raspberry Pi 4 x64
 
@@ -75,5 +83,7 @@ sed -i 's/MACHINE = "raspberrypi4-64"/#MACHINE = "raspberrypi4-64"/g' ~/rpi64/bu
 MACHINE=raspberrypi4-64
 source poky-dunfell/oe-init-build-env ~/rpi64/build
 bitbake qt5-image
+ scp tmp/log/cooker/raspberrypi4-64/202101*.log root@192.168.1.51:/root/logs
+
 
 ```
