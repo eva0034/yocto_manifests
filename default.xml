@@ -8,6 +8,7 @@
   <remote name="oe" fetch="git://git.openembedded.org" />
   <remote name="qt5" fetch="git://github.com/meta-qt5" />
   <remote name="jumpnow" fetch="git://github.com/jumpnow" />
+  <remote name="matt2005" fetch="git://github.com/matt2005" />
 
   <!-- List all the repositories you want to fetch -->
   <!-- "name": git repository's name on hosting server
@@ -22,6 +23,7 @@
   <project name="meta-qt5" revision="refs/heads/dunfell"  remote="qt5" path="poky-dunfell/meta-qt5" />
   <project name="meta-virtualization" revision="refs/heads/dunfell" remote="yocto" path="poky-dunfell/meta-virtualization" />
   <project name="meta-jumpnow" revision="refs/heads/dunfell"  remote="jumpnow" path="poky-dunfell/meta-jumpnow" />
+  <project name="meta-crankshaft" revision="refs/heads/OpenDash"  remote="matt2005" path="poky-dunfell/meta-crankshaft" />
   <project name="meta-rpi" revision="refs/heads/dunfell"  remote="jumpnow" path="rpi/meta-rpi" />
 
 </manifest>

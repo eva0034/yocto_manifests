@@ -54,6 +54,7 @@ cp ~/yocto/rpi/meta-rpi/conf/local.conf.sample ~/yocto/rpi/build/conf/local.conf
 cp ~/yocto/rpi/meta-rpi/conf/bblayers.conf.sample ~/yocto/rpi/build/conf/bblayers.conf
 sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "tar.xz rpi-sdimg"/g' ~/yocto/rpi/build/conf/local.conf
 sed -i 's/MACHINE = "raspberrypi3"/#MACHINE = "raspberrypi3"/g' ~/yocto/rpi/build/conf/local.conf
+sed -i 's/DISTRO_FEATURES = "ext2/DISTRO_FEATURES = "x11 ext2/g' ~/yocto/rpi/build/conf/local.conf
 export MACHINE=raspberrypi0-wifi
 source ~/yocto/poky-dunfell/oe-init-build-env ~/yocto/rpi/build
 bitbake core-image-base
@@ -63,7 +64,10 @@ bitbake core-image-base
 ```bash
 export MACHINE=raspberrypi3
 source ~/poky-dunfell/oe-init-build-env ~/yocto/rpi/build
-bitbake core-image-base
+#bitbake core-image-base
+#bitbake core-image-x11
+bitbake core-image-sato-sdk
+bitbake core-image-sato-sdk -c populate_sdk
 
 ```
 
