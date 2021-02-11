@@ -9,6 +9,7 @@
   <remote name="qt5" fetch="git://github.com/meta-qt5" />
   <remote name="jumpnow" fetch="git://github.com/jumpnow" />
   <remote name="matt2005" fetch="git://github.com/matt2005" />
+  <remote name="schnitzeltony" fetch="git://github.com/schnitzeltony" />
 
   <!-- List all the repositories you want to fetch -->
   <!-- "name": git repository's name on hosting server
