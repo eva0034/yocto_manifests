@@ -20,7 +20,6 @@
   <project name="meta-security" revision="refs/heads/dunfell"  remote="yocto" path="poky-dunfell/meta-security" />
   <project name="meta-openembedded" revision="refs/heads/dunfell"  remote="oe" path="poky-dunfell/meta-openembedded" />
   <project name="meta-qt5" revision="refs/heads/dunfell"  remote="qt5" path="poky-dunfell/meta-qt5" />
-  <project name="meta-virtualization" revision="refs/heads/dunfell"  remote="oe" path="poky-dunfell/meta-virtualization" />
   <project name="csng_yocto" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-crankshaft" />
   <project name="meta-opendash" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-opendash" />
 </manifest>

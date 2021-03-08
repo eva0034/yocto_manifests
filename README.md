@@ -57,7 +57,7 @@ sed -i 's/MACHINE = "raspberrypi3"/#MACHINE = "raspberrypi3"/g' ~/yocto/rpi/buil
 sed -i 's/DISTRO_FEATURES = "ext2/DISTRO_FEATURES = "x11 ext2/g' ~/yocto/rpi/build/conf/local.conf
 export MACHINE=raspberrypi0-wifi
 source ~/yocto/poky-dunfell/oe-init-build-env ~/yocto/rpi/build
-bitbake core-image-base
+bitbake crankshaft-image
 ```
 
 ##Raspberry Pi 3
@@ -74,19 +74,9 @@ bitbake core-image-sato-sdk -c populate_sdk
 ## Raspberry Pi 4 x64
 
 ```bash
-cd ~/
-SSTATE_DIR="~/sstate-cache"
-export SSTATE_DIR="~/sstate-cache"
-repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m rpi4_x64.xml
-repo sync
-mkdir -p ~/rpi64/build/conf
-cp ~/rpi64/meta-rpi64/conf/local.conf.sample ~/rpi64/build/conf/local.conf
-cp ~/rpi64/meta-rpi64/conf/bblayers.conf.sample ~/rpi64/build/conf/bblayers.conf
-sed -i 's/IMAGE_FSTYPES = "tar.xz"/IMAGE_FSTYPES = "tar.xz rpi-sdimg"/g' ~/rpi64/build/conf/local.conf
-sed -i 's/MACHINE = "raspberrypi4-64"/#MACHINE = "raspberrypi4-64"/g' ~/rpi64/build/conf/local.conf
-MACHINE=raspberrypi4-64
-source poky-dunfell/oe-init-build-env ~/rpi64/build
-bitbake qt5-image
+export MACHINE=raspberrypi4-64
+source ~/yocto/poky-dunfell/oe-init-build-env ~/yocto/rpi/build
+bitbake crankshaft-image
  scp tmp/log/cooker/raspberrypi4-64/202101*.log root@192.168.1.51:/root/logs
 
 
