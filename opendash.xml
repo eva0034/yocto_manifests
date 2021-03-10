@@ -8,6 +8,7 @@
   <remote name="oe" fetch="git://git.openembedded.org" />
   <remote name="qt5" fetch="git://github.com/meta-qt5" />
   <remote name="matt2005" fetch="git://github.com/matt2005" />
+  <remote fetch="https://github.com/mendersoftware" name="mender"/>
 
   <!-- List all the repositories you want to fetch -->
   <!-- "name": git repository's name on hosting server

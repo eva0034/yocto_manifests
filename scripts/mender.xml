@@ -5,8 +5,6 @@
   <remote fetch="https://github.com/mendersoftware" name="mender"/>
 
   <project name="meta-mender" remote="mender" revision="dunfell" path="poky-dunfell/meta-mender"/>
-  <project name="meta-mender-community" remote="mender" revision="dunfell" path="poky-dunfell/meta-mender-community">
-  <!-- <copyfile dest="setup-environment" src="scripts/setup-environment"/> -->
-  </project>
+  <project name="meta-mender-community" remote="mender" revision="dunfell" path="poky-dunfell/meta-mender-community"/>
 
   </manifest>
