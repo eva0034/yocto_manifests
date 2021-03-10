@@ -22,4 +22,5 @@
   <project name="meta-qt5" revision="refs/heads/dunfell"  remote="qt5" path="poky-dunfell/meta-qt5" />
   <project name="csng_yocto" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-crankshaft" />
   <project name="meta-opendash" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-opendash" />
+  <include name="scripts/mender.xml"/>
 </manifest>
