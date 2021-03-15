@@ -9,6 +9,7 @@
   <remote name="qt5" fetch="git://github.com/meta-qt5" />
   <remote name="matt2005" fetch="git://github.com/matt2005" />
   <remote fetch="https://github.com/mendersoftware" name="mender"/>
+  <remote name="KDE" fetch="https://github.com/KDE" />
 
   <!-- List all the repositories you want to fetch -->
   <!-- "name": git repository's name on hosting server
@@ -23,6 +24,9 @@
   <project name="meta-qt5" revision="refs/heads/dunfell"  remote="qt5" path="poky-dunfell/meta-qt5" />
   <project name="csng_yocto" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-crankshaft" />
   <project name="meta-opendash" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-opendash" />
+  <project name="yocto-meta-kf5" revision="refs/heads/master"  remote="KDE" path="poky-dunfell/meta-kf5" />
+
+
   <remote fetch="https://github.com/mendersoftware" name="mender"/>
 
   <project name="meta-mender" remote="mender" revision="dunfell" path="poky-dunfell/meta-mender"/>
