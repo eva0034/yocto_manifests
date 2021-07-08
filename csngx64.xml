@@ -26,6 +26,6 @@
   <project name="csng_yocto" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-crankshaft" />
   <project name="meta-qt5-extra" revision="refs/heads/dunfell"  remote="schnitzeltony" path="poky-dunfell/meta-qt5-extra" />
   <project name="meta-jumpnow" revision="refs/heads/dunfell"  remote="jumpnow" path="poky-dunfell/meta-jumpnow" />
-  <project name="meta-rpi64" revision="refs/heads/dunfell"  remote="jumpnow" path="rpi64/meta-rpi64" />
+  <project name="meta-rpi64" revision="refs/heads/dunfell"  remote="jumpnow" path="poky-dunfell/meta-rpi64" />
 
 </manifest>
