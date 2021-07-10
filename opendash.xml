@@ -8,7 +8,6 @@
   <remote name="oe" fetch="git://git.openembedded.org" />
   <remote name="qt5" fetch="git://github.com/meta-qt5" />
   <remote name="matt2005" fetch="git://github.com/matt2005" />
-  <remote fetch="https://github.com/mendersoftware" name="mender"/>
   <remote name="KDE" fetch="https://github.com/KDE" />
 
   <!-- List all the repositories you want to fetch -->
@@ -17,18 +16,12 @@
        "revision": commitish to checkout (if not the default)
        "path": directory where git repository gets cloned/synced -->
 
-  <project name="poky" revision="refs/heads/dunfell" remote="yocto" path="poky-dunfell"/>
-  <project name="meta-raspberrypi" revision="refs/heads/dunfell"  remote="yocto" path="poky-dunfell/meta-raspberrypi" />
-  <project name="meta-security" revision="refs/heads/dunfell"  remote="yocto" path="poky-dunfell/meta-security" />
-  <project name="meta-openembedded" revision="refs/heads/dunfell"  remote="oe" path="poky-dunfell/meta-openembedded" />
-  <project name="meta-qt5" revision="refs/heads/dunfell"  remote="qt5" path="poky-dunfell/meta-qt5" />
-  <project name="csng_yocto" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-crankshaft" />
-  <project name="meta-opendash" revision="refs/heads/main"  remote="matt2005" path="poky-dunfell/meta-opendash" />
-  <project name="yocto-meta-kf5" revision="refs/heads/master"  remote="KDE" path="poky-dunfell/meta-kf5" />
-
-
-  <remote fetch="https://github.com/mendersoftware" name="mender"/>
-
-  <project name="meta-mender" remote="mender" revision="dunfell" path="poky-dunfell/meta-mender"/>
-  <project name="meta-mender-community" remote="mender" revision="dunfell" path="poky-dunfell/meta-mender-community"/>
+  <project name="poky" revision="refs/heads/hardknott" remote="yocto" path="poky-hardknott"/>
+  <project name="meta-raspberrypi" revision="refs/heads/hardknott"  remote="yocto" path="poky-hardknott/meta-raspberrypi" />
+  <project name="meta-security" revision="refs/heads/hardknott"  remote="yocto" path="poky-hardknott/meta-security" />
+  <project name="meta-openembedded" revision="refs/heads/hardknott"  remote="oe" path="poky-hardknott/meta-openembedded" />
+  <project name="meta-qt5" revision="refs/heads/hardknott"  remote="qt5" path="poky-hardknott/meta-qt5" />
+  <project name="meta-opencardev" revision="refs/heads/hardknott"  remote="opencardev" path="poky-hardknott/meta-opencardev" />
+  <project name="meta-opendash" revision="refs/heads/main"  remote="matt2005" path="poky-hardknott/meta-opendash" />
+  <project name="yocto-meta-kf5" revision="refs/heads/master"  remote="KDE" path="poky-hardknott/meta-kf5" />
 </manifest>
