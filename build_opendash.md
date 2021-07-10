@@ -20,6 +20,25 @@ mkdir -p ~/yocto/download
 export SSTATE_DIR="$(pwd)/sstate-cache"
 export DL_DIR="$(pwd)/download"
 source ~/yocto/poky-hardknott/oe-init-build-env ~/yocto/rpi/build
+```
+
+Optionally Add SSTATE_DIR and DL_DIR to Bash profile
+
+```bash
+cat << EOF > ~/.bash_profile
+export SSTATE_DIR="$HOME/yocto/sstate-cache"
+export DL_DIR="$HOME/yocto/download"
+EOF
+```
+
+Build Openauto Only
+```bash
+bitbake openauto
+```
+
+
+Build Image
+```bash
 bitbake opendsh-image --runall=fetch
 bitbake opendsh-image
 ```
