@@ -1,6 +1,9 @@
 ## Building
 
-I'm currently using an AWS EC2 instance (c5.xlarge) with Debian installed with a 200GB gp2 disk.
+I'm currently using an AWS EC2 instance (c5.xlarge) with Debian installed with a 200GB gp2 disk. Just need to remember to shutdown after building the image.
+
+Connect to the Instance via SSH and run the following. The inital build should take about ~8 hours as QT takes ages to build.
+
 
 ```bash 
 mkdir -p ~/yocto
