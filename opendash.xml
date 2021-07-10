@@ -9,7 +9,6 @@
   <remote name="qt5" fetch="git://github.com/meta-qt5" />
   <remote name="opencardev" fetch="git://github.com/opencardev" />
   <remote name="matt2005" fetch="git://github.com/matt2005" />
-  <remote name="KDE" fetch="https://github.com/KDE" />
 
   <!-- List all the repositories you want to fetch -->
   <!-- "name": git repository's name on hosting server
@@ -24,5 +23,4 @@
   <project name="meta-qt5" revision="refs/heads/hardknott"  remote="qt5" path="poky-hardknott/meta-qt5" />
   <project name="meta-opencardev" revision="refs/heads/hardknott"  remote="opencardev" path="poky-hardknott/meta-opencardev" />
   <project name="meta-opendash" revision="refs/heads/hardknott"  remote="matt2005" path="poky-hardknott/meta-opendash" />
-  <project name="yocto-meta-kf5" revision="refs/heads/master"  remote="KDE" path="poky-hardknott/meta-kf5" />
 </manifest>
