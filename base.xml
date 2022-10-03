@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <default remote="yocto" revision="default"/>
+
+  <!-- You can have as many remote repositories as you like -->
+
+  <remote name="yocto" fetch="git://git.yoctoproject.org" />
+  <remote name="oe" fetch="git://git.openembedded.org" />
+
+  <!-- List all the repositories you want to fetch -->
+  <!-- "name": git repository's name on hosting server
+       "remote": the remote host from above (if not the default)
+       "revision": commitish to checkout (if not the default)
+       "path": directory where git repository gets cloned/synced -->
+
+  <project name="poky" revision="refs/heads/kirkstone" remote="yocto" path="poky-kirkstone"/>
+  <project name="meta-raspberrypi" revision="refs/heads/kirkstone"  remote="yocto" path="poky-kirkstone/meta-raspberrypi" />
+  <project name="meta-security" revision="refs/heads/kirkstone"  remote="yocto" path="poky-kirkstone/meta-security" />
+  <project name="meta-openembedded" revision="refs/heads/kirkstone"  remote="oe" path="poky-kirkstone/meta-openembedded" />
+  <project name="meta-virtualization" revision="refs/heads/kirkstone" remote="yocto" path="poky-kirkstone/meta-virtualization" />
+
+</manifest>
