@@ -6,7 +6,7 @@
 
   <remote name="yocto" fetch="git://git.yoctoproject.org" />
   <remote name="oe" fetch="git://git.openembedded.org" />
-  <remote name="opencardev" fetch="git://github.com/opencardev" />
+  <remote name="opencardev" fetch="https://github.com/opencardev" />
 
   <!-- List all the repositories you want to fetch -->
   <!-- "name": git repository's name on hosting server
