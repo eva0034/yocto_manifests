@@ -6,6 +6,7 @@
 
   <remote name="yocto" fetch="git://git.yoctoproject.org" />
   <remote name="oe" fetch="git://git.openembedded.org" />
+  <remote name="opencardev" fetch="git://github.com/opencardev" />
 
   <!-- List all the repositories you want to fetch -->
   <!-- "name": git repository's name on hosting server
@@ -18,5 +19,6 @@
   <project name="meta-security" revision="refs/heads/kirkstone"  remote="yocto" path="poky-kirkstone/meta-security" />
   <project name="meta-openembedded" revision="refs/heads/kirkstone"  remote="oe" path="poky-kirkstone/meta-openembedded" />
   <project name="meta-virtualization" revision="refs/heads/kirkstone" remote="yocto" path="poky-kirkstone/meta-virtualization" />
+  <project name="meta-opencardev" revision="refs/heads/kirkstone"  remote="opencardev" path="poky-kirkstone/meta-opencardev" />
 
 </manifest>
