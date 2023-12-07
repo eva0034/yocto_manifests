@@ -9,7 +9,7 @@ Connect to the Instance via SSH and run the following. The inital build should t
 mkdir -p ~/yocto
 cd ~/yocto
 sudo chmod 777 ~/yocto
-repo init -u https://github.com/matt2005/yocto_manifests.git -b main -m opendash.xml
+repo init -u https://github.com/eva0034/yocto_manifests.git -b main -m opendash.xml
 repo sync
 mkdir -p ~/yocto/rpi/build/conf
 cp ~/yocto/poky-hardknott/meta-opendash/conf/local.conf.sample ~/yocto/rpi/build/conf/local.conf
